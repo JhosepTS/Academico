@@ -41,8 +41,11 @@
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.chkEstado = new System.Windows.Forms.CheckBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.dataEstudiante = new System.Windows.Forms.DataGridView();
+            this.btnNuevo = new System.Windows.Forms.Button();
+            this.btnActualizar = new System.Windows.Forms.Button();
+            this.btnDocentes = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dataEstudiante)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -69,6 +72,7 @@
             this.btnListar.TabIndex = 2;
             this.btnListar.Text = "Listar";
             this.btnListar.UseVisualStyleBackColor = true;
+            this.btnListar.Click += new System.EventHandler(this.btnListar_Click);
             // 
             // Codigo
             // 
@@ -82,7 +86,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(480, 276);
+            this.label3.Location = new System.Drawing.Point(324, 276);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(61, 13);
             this.label3.TabIndex = 4;
@@ -100,7 +104,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(480, 343);
+            this.label5.Location = new System.Drawing.Point(324, 343);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(39, 13);
             this.label5.TabIndex = 6;
@@ -110,34 +114,34 @@
             // 
             this.txtId.Location = new System.Drawing.Point(102, 310);
             this.txtId.Name = "txtId";
-            this.txtId.Size = new System.Drawing.Size(283, 20);
+            this.txtId.Size = new System.Drawing.Size(147, 20);
             this.txtId.TabIndex = 7;
             // 
             // txtNombres
             // 
-            this.txtNombres.Location = new System.Drawing.Point(483, 310);
+            this.txtNombres.Location = new System.Drawing.Point(327, 310);
             this.txtNombres.Name = "txtNombres";
-            this.txtNombres.Size = new System.Drawing.Size(253, 20);
+            this.txtNombres.Size = new System.Drawing.Size(263, 20);
             this.txtNombres.TabIndex = 8;
             // 
             // txtNum_doc
             // 
             this.txtNum_doc.Location = new System.Drawing.Point(102, 370);
             this.txtNum_doc.Name = "txtNum_doc";
-            this.txtNum_doc.Size = new System.Drawing.Size(283, 20);
+            this.txtNum_doc.Size = new System.Drawing.Size(147, 20);
             this.txtNum_doc.TabIndex = 9;
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(483, 370);
+            this.txtEmail.Location = new System.Drawing.Point(327, 370);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(253, 20);
+            this.txtEmail.Size = new System.Drawing.Size(263, 20);
             this.txtEmail.TabIndex = 10;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(99, 397);
+            this.label2.Location = new System.Drawing.Point(99, 407);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(51, 13);
             this.label2.TabIndex = 11;
@@ -146,26 +150,60 @@
             // chkEstado
             // 
             this.chkEstado.AutoSize = true;
-            this.chkEstado.Location = new System.Drawing.Point(156, 396);
+            this.chkEstado.Location = new System.Drawing.Point(167, 407);
             this.chkEstado.Name = "chkEstado";
             this.chkEstado.Size = new System.Drawing.Size(15, 14);
             this.chkEstado.TabIndex = 12;
             this.chkEstado.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // dataEstudiante
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(102, 58);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(634, 199);
-            this.dataGridView1.TabIndex = 13;
+            this.dataEstudiante.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataEstudiante.Location = new System.Drawing.Point(102, 58);
+            this.dataEstudiante.Name = "dataEstudiante";
+            this.dataEstudiante.Size = new System.Drawing.Size(634, 199);
+            this.dataEstudiante.TabIndex = 13;
+            this.dataEstudiante.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datoEstudiante_CellContentClick);
+            // 
+            // btnNuevo
+            // 
+            this.btnNuevo.Location = new System.Drawing.Point(623, 310);
+            this.btnNuevo.Name = "btnNuevo";
+            this.btnNuevo.Size = new System.Drawing.Size(75, 23);
+            this.btnNuevo.TabIndex = 14;
+            this.btnNuevo.Text = "NUEVO";
+            this.btnNuevo.UseVisualStyleBackColor = true;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
+            // 
+            // btnActualizar
+            // 
+            this.btnActualizar.Location = new System.Drawing.Point(623, 352);
+            this.btnActualizar.Name = "btnActualizar";
+            this.btnActualizar.Size = new System.Drawing.Size(75, 23);
+            this.btnActualizar.TabIndex = 15;
+            this.btnActualizar.Text = "ACTUALIZAR";
+            this.btnActualizar.UseVisualStyleBackColor = true;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
+            // 
+            // btnDocentes
+            // 
+            this.btnDocentes.Location = new System.Drawing.Point(623, 397);
+            this.btnDocentes.Name = "btnDocentes";
+            this.btnDocentes.Size = new System.Drawing.Size(75, 23);
+            this.btnDocentes.TabIndex = 16;
+            this.btnDocentes.Text = "DOCENTES";
+            this.btnDocentes.UseVisualStyleBackColor = true;
+            this.btnDocentes.Click += new System.EventHandler(this.btnDocentes_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.btnDocentes);
+            this.Controls.Add(this.btnActualizar);
+            this.Controls.Add(this.btnNuevo);
+            this.Controls.Add(this.dataEstudiante);
             this.Controls.Add(this.chkEstado);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtEmail);
@@ -181,7 +219,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Form1";
             this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataEstudiante)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -202,7 +240,10 @@
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox chkEstado;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataEstudiante;
+        private System.Windows.Forms.Button btnNuevo;
+        private System.Windows.Forms.Button btnActualizar;
+        private System.Windows.Forms.Button btnDocentes;
     }
 }
 

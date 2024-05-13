@@ -38,16 +38,16 @@ namespace Academico.Negocio
                         orderby x.Id
                         select x;
             return query.ToList();
+            //return db.Estudiante.ToList();
         }
 
         public List<Docente> ListarDocentesXNombre(string Nombre)
         {
             var query = from x in db.Docente
-                        where x.nombres.Contains(Nombre)
-                        orderby x.Id
+                        orderby x.Nombre.Contains(Nombre)
                         select x;
             return query.ToList();
+            //return db.Estudiante.ToList();
         }
     }
-
 }
