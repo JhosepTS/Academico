@@ -6,9 +6,11 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Newtonsoft.Json;
 
 namespace Academico.Presentacion
 {
@@ -20,6 +22,7 @@ namespace Academico.Presentacion
         }
         EstudianteNegocio objNegocio = new EstudianteNegocio();
         Estudiante objEstudiante = new Estudiante();
+        FuenteExterna objApi = new FuenteExterna();
         private void FrmEstudiante_Load(object sender, EventArgs e)
         {
 
@@ -28,7 +31,13 @@ namespace Academico.Presentacion
         void Limpiar()
         {
             foreach (Control c in Controls)
-                c.Text = "";
+            {
+                if (c is TextBox)
+                {
+                    c.Text = "";
+                }
+            }
+            chkEstado.Checked = false;
         }
         bool Validar(String p1, string p2, String p3)
         {
@@ -36,6 +45,46 @@ namespace Academico.Presentacion
                 return false;
             else
                 return true;
+        }
+
+        private void consultarDNI()
+        {
+            try
+            {
+                if (txtNum_doc.Text.Length == 8 && int.TryParse(txtNum_doc.Text, out _))
+                {
+                    // Reemplazar 'objApi' con la instancia adecuada de tu clase FuenteExterna
+                    dynamic respuesta = objApi.Get("https://dniruc.apisperu.com/api/v1/dni/" + txtNum_doc.Text + "?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImxtdGltYW5hZ0BnbWFpbC5jb20ifQ.udFejq_ZQw4kqP6wfRGX1RaKaksh-lFwcqlM7p9Y1dU");
+
+                    if (respuesta != null)
+                    {
+                        txtNombres.Text = $"{respuesta.nombres} {respuesta.apellidoPaterno} {respuesta.apellidoMaterno}";
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se pudo obtener la información del DNI.", "Error en la consulta", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Ingrese un número de documento válido.", "Documento inválido", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (WebException webEx)
+            {
+                // Manejo específico para errores de red
+                MessageBox.Show("Error de red: " + webEx.Message, "Error de red", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (JsonException jsonEx)
+            {
+                // Manejo específico para errores de deserialización
+                MessageBox.Show("Error al procesar la respuesta: " + jsonEx.Message, "Error de datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                // Manejo genérico de excepciones
+                MessageBox.Show("Ocurrió un error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnActualizar_Click(object sender, EventArgs e)
@@ -157,6 +206,31 @@ namespace Academico.Presentacion
             formularioD.Show();
 
             this.Hide();
+        }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chkEstado_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            Limpiar();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BuscarDNI_Click(object sender, EventArgs e)
+        {
+            consultarDNI();
         }
     }
 }

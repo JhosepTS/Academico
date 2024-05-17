@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -88,7 +89,14 @@ namespace Academico.Presentacion
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.ToString());
+                    if (ex is SqlException && ((SqlException)ex).Number == 2627) // Error de violación de clave primaria
+                    {
+                        MessageBox.Show("El registro ya existe.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error al agregar el docente: " + ex.Message);
+                    }
                 }
             }
             else
@@ -183,6 +191,16 @@ namespace Academico.Presentacion
         }
 
         private void txtCodigo_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FormDocentes_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }

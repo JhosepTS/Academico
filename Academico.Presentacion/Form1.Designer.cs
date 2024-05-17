@@ -45,6 +45,8 @@
             this.btnNuevo = new System.Windows.Forms.Button();
             this.btnActualizar = new System.Windows.Forms.Button();
             this.btnDocentes = new System.Windows.Forms.Button();
+            this.btnLimpiar = new System.Windows.Forms.Button();
+            this.BuscarDNI = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataEstudiante)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,6 +65,7 @@
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(209, 20);
             this.txtBuscar.TabIndex = 1;
+            this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             // 
             // btnListar
             // 
@@ -155,6 +158,7 @@
             this.chkEstado.Size = new System.Drawing.Size(15, 14);
             this.chkEstado.TabIndex = 12;
             this.chkEstado.UseVisualStyleBackColor = true;
+            this.chkEstado.CheckedChanged += new System.EventHandler(this.chkEstado_CheckedChanged);
             // 
             // dataEstudiante
             // 
@@ -167,7 +171,7 @@
             // 
             // btnNuevo
             // 
-            this.btnNuevo.Location = new System.Drawing.Point(623, 310);
+            this.btnNuevo.Location = new System.Drawing.Point(623, 276);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(75, 23);
             this.btnNuevo.TabIndex = 14;
@@ -177,7 +181,7 @@
             // 
             // btnActualizar
             // 
-            this.btnActualizar.Location = new System.Drawing.Point(623, 352);
+            this.btnActualizar.Location = new System.Drawing.Point(623, 310);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(75, 23);
             this.btnActualizar.TabIndex = 15;
@@ -187,7 +191,7 @@
             // 
             // btnDocentes
             // 
-            this.btnDocentes.Location = new System.Drawing.Point(623, 397);
+            this.btnDocentes.Location = new System.Drawing.Point(623, 381);
             this.btnDocentes.Name = "btnDocentes";
             this.btnDocentes.Size = new System.Drawing.Size(75, 23);
             this.btnDocentes.TabIndex = 16;
@@ -195,11 +199,33 @@
             this.btnDocentes.UseVisualStyleBackColor = true;
             this.btnDocentes.Click += new System.EventHandler(this.btnDocentes_Click);
             // 
+            // btnLimpiar
+            // 
+            this.btnLimpiar.Location = new System.Drawing.Point(623, 343);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(75, 23);
+            this.btnLimpiar.TabIndex = 17;
+            this.btnLimpiar.Text = "LIMPIAR";
+            this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
+            // 
+            // BuscarDNI
+            // 
+            this.BuscarDNI.Location = new System.Drawing.Point(287, 407);
+            this.BuscarDNI.Name = "BuscarDNI";
+            this.BuscarDNI.Size = new System.Drawing.Size(75, 23);
+            this.BuscarDNI.TabIndex = 18;
+            this.BuscarDNI.Text = "BUSCAR";
+            this.BuscarDNI.UseVisualStyleBackColor = true;
+            this.BuscarDNI.Click += new System.EventHandler(this.BuscarDNI_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.BuscarDNI);
+            this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnDocentes);
             this.Controls.Add(this.btnActualizar);
             this.Controls.Add(this.btnNuevo);
@@ -219,6 +245,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataEstudiante)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -244,6 +271,8 @@
         private System.Windows.Forms.Button btnNuevo;
         private System.Windows.Forms.Button btnActualizar;
         private System.Windows.Forms.Button btnDocentes;
+        private System.Windows.Forms.Button btnLimpiar;
+        private System.Windows.Forms.Button BuscarDNI;
     }
 }
 
