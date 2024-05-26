@@ -6,6 +6,7 @@
         /// Variable del diseñador necesaria.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
+        
 
         /// <summary>
         /// Limpiar los recursos que se estén usando.
@@ -28,6 +29,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.btnListar = new System.Windows.Forms.Button();
@@ -44,10 +46,15 @@
             this.dataEstudiante = new System.Windows.Forms.DataGridView();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.btnActualizar = new System.Windows.Forms.Button();
-            this.btnDocentes = new System.Windows.Forms.Button();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.BuscarDNI = new System.Windows.Forms.Button();
+            this.btnVerReporte = new System.Windows.Forms.Button();
+            this.estudiantesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.estudiantes = new Academico.Presentacion.Estudiantes();
+            this.btnAsistencia = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataEstudiante)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.estudiantesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.estudiantes)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -189,16 +196,6 @@
             this.btnActualizar.UseVisualStyleBackColor = true;
             this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
-            // btnDocentes
-            // 
-            this.btnDocentes.Location = new System.Drawing.Point(623, 381);
-            this.btnDocentes.Name = "btnDocentes";
-            this.btnDocentes.Size = new System.Drawing.Size(75, 23);
-            this.btnDocentes.TabIndex = 16;
-            this.btnDocentes.Text = "DOCENTES";
-            this.btnDocentes.UseVisualStyleBackColor = true;
-            this.btnDocentes.Click += new System.EventHandler(this.btnDocentes_Click);
-            // 
             // btnLimpiar
             // 
             this.btnLimpiar.Location = new System.Drawing.Point(623, 343);
@@ -219,14 +216,45 @@
             this.BuscarDNI.UseVisualStyleBackColor = true;
             this.BuscarDNI.Click += new System.EventHandler(this.BuscarDNI_Click);
             // 
+            // btnVerReporte
+            // 
+            this.btnVerReporte.Location = new System.Drawing.Point(488, 23);
+            this.btnVerReporte.Name = "btnVerReporte";
+            this.btnVerReporte.Size = new System.Drawing.Size(75, 23);
+            this.btnVerReporte.TabIndex = 19;
+            this.btnVerReporte.Text = "Reporte";
+            this.btnVerReporte.UseVisualStyleBackColor = true;
+            this.btnVerReporte.Click += new System.EventHandler(this.btnVerReporte_Click);
+            // 
+            // estudiantesBindingSource
+            // 
+            this.estudiantesBindingSource.DataSource = this.estudiantes;
+            this.estudiantesBindingSource.Position = 0;
+            // 
+            // estudiantes
+            // 
+            this.estudiantes.DataSetName = "Estudiantes";
+            this.estudiantes.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // btnAsistencia
+            // 
+            this.btnAsistencia.Location = new System.Drawing.Point(623, 382);
+            this.btnAsistencia.Name = "btnAsistencia";
+            this.btnAsistencia.Size = new System.Drawing.Size(87, 38);
+            this.btnAsistencia.TabIndex = 20;
+            this.btnAsistencia.Text = "ASISTENCIA";
+            this.btnAsistencia.UseVisualStyleBackColor = true;
+            this.btnAsistencia.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 443);
+            this.Controls.Add(this.btnAsistencia);
+            this.Controls.Add(this.btnVerReporte);
             this.Controls.Add(this.BuscarDNI);
             this.Controls.Add(this.btnLimpiar);
-            this.Controls.Add(this.btnDocentes);
             this.Controls.Add(this.btnActualizar);
             this.Controls.Add(this.btnNuevo);
             this.Controls.Add(this.dataEstudiante);
@@ -247,6 +275,8 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataEstudiante)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.estudiantesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.estudiantes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -270,9 +300,12 @@
         private System.Windows.Forms.DataGridView dataEstudiante;
         private System.Windows.Forms.Button btnNuevo;
         private System.Windows.Forms.Button btnActualizar;
-        private System.Windows.Forms.Button btnDocentes;
         private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.Button BuscarDNI;
+        private System.Windows.Forms.Button btnVerReporte;
+        private System.Windows.Forms.BindingSource estudiantesBindingSource;
+        private Estudiantes estudiantes;
+        private System.Windows.Forms.Button btnAsistencia;
     }
 }
 

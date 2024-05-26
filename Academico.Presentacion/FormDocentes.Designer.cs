@@ -52,7 +52,6 @@
             this.btnNuevo = new System.Windows.Forms.Button();
             this.btnActualizar = new System.Windows.Forms.Button();
             this.BtnLimpiar = new System.Windows.Forms.Button();
-            this.btnEstudiante = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataDocente)).BeginInit();
             this.SuspendLayout();
@@ -281,22 +280,11 @@
             this.BtnLimpiar.UseVisualStyleBackColor = true;
             this.BtnLimpiar.Click += new System.EventHandler(this.BtnLimpiar_Click);
             // 
-            // btnEstudiante
-            // 
-            this.btnEstudiante.Location = new System.Drawing.Point(38, 482);
-            this.btnEstudiante.Name = "btnEstudiante";
-            this.btnEstudiante.Size = new System.Drawing.Size(100, 38);
-            this.btnEstudiante.TabIndex = 22;
-            this.btnEstudiante.Text = "ESTUDIANTE";
-            this.btnEstudiante.UseVisualStyleBackColor = true;
-            this.btnEstudiante.Click += new System.EventHandler(this.btnEstudiante_Click);
-            // 
             // FormDocentes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(883, 579);
-            this.Controls.Add(this.btnEstudiante);
             this.Controls.Add(this.BtnLimpiar);
             this.Controls.Add(this.btnActualizar);
             this.Controls.Add(this.dataDocente);
@@ -338,6 +326,5 @@
         private System.Windows.Forms.Button btnNuevo;
         private System.Windows.Forms.Button btnActualizar;
         private System.Windows.Forms.Button BtnLimpiar;
-        private System.Windows.Forms.Button btnEstudiante;
     }
 }

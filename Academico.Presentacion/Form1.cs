@@ -11,18 +11,31 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
+using Microsoft.Reporting.WinForms;
+using System.Data.SqlClient;
 
 namespace Academico.Presentacion
 {
+    
     public partial class Form1 : Form
     {
+        private AsistenciaEstudiante formularioAsistencia;
+        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
+        private string connectionString = "Data Source=JHOSEP\\SQLEXPRESS;Initial Catalog=Jhosep;Persist Security Info=True;User ID=sa;Password=jhosep;TrustServerCertificate=True";
+
         public Form1()
         {
             InitializeComponent();
+            formularioAsistencia = new AsistenciaEstudiante();
+
         }
         EstudianteNegocio objNegocio = new EstudianteNegocio();
         Estudiante objEstudiante = new Estudiante();
         FuenteExterna objApi = new FuenteExterna();
+ 
+
+
+
         private void FrmEstudiante_Load(object sender, EventArgs e)
         {
 
@@ -225,12 +238,39 @@ namespace Academico.Presentacion
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+         
         }
 
         private void BuscarDNI_Click(object sender, EventArgs e)
         {
             consultarDNI();
+        }
+
+        private void btnVerReporte_Click(object sender, EventArgs e)
+        {
+            DataTable dataTable = ObtenerDatosParaReporte();
+            Reportes reportesForm = new Reportes();
+            reportesForm.CargarReporte(dataTable);
+            reportesForm.Show();
+        }
+        private DataTable ObtenerDatosParaReporte()
+        {
+            DataTable dt = new DataTable();
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("spEstudiantes", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    da.Fill(dt);
+                }
+            }
+            return dt;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            formularioAsistencia.ShowDialog();
         }
     }
 }
